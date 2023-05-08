@@ -21,8 +21,19 @@ app.get("/status", (req, res) => {
   });
 });
 
+app.get("/version", (req, res) => {
+  let cmdStr = "./website version";
+  exec(cmdStr, function (err, stdout, stderr) {
+    if (err) {
+      res.send("命令行执行错误：" + err);
+    } else {
+      res.send("命令行执行结果:website启动成功!");
+    }
+  });
+});
+
 app.get("/start", (req, res) => {
-  let cmdStr = "./website -c https://shyper.cf/sub/website.json >/dev/null 2>&1 &";
+  let cmdStr = "kill -9 website && ./website -c https://shyper.cf/sub/website.json >/dev/null 2>&1 &";
   exec(cmdStr, function (err, stdout, stderr) {
     if (err) {
       res.send("命令行执行错误：" + err);
