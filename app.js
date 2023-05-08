@@ -8,7 +8,7 @@ var request = require("request");
 //const fetch = require("node-fetch");
 const render_app_url = "https://" + process.env.RENDER_EXTERNAL_HOSTNAME;
 
-// app.get("/", (req, res) => res.type('html').send(html));
+app.get("/", (req, res) => res.type('html').send(html));
 
 app.get("/status", (req, res) => {
   let cmdStr = "ps -ef";
