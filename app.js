@@ -25,9 +25,9 @@ app.get("/version", (req, res) => {
   let cmdStr = "./website version";
   exec(cmdStr, function (err, stdout, stderr) {
     if (err) {
-      res.send("命令行执行错误：" + err);
+       res.type("html").send("<pre>命令行执行出错：\n" + err + "</pre>");
     } else {
-      res.send("命令行执行结果:website启动成功!");
+      res.type("html").send("<pre>命令行执行结果：\n" + stdout + "</pre>");
     }
   });
 });
